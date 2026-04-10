@@ -1,0 +1,10 @@
+.env
+.env.*
+node_modules
+.next
+.turbo
+coverage
+*.tsbuildinfo
+.git
+.vercel
+src/infrastructure/database/generated

@@ -1,0 +1,16 @@
+.env
+.env.*
+apps/web/.env
+apps/web/.env.*
+node_modules
+apps/web/node_modules
+.next
+apps/web/.next
+.turbo
+coverage
+apps/web/coverage
+*.tsbuildinfo
+.git
+.vercel
+apps/web/.vercel
+apps/web/src/infrastructure/database/generated
