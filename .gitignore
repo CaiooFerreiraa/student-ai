@@ -1,0 +1,14 @@
+node_modules
+.next
+.turbo
+.vercel
+dist
+coverage
+*.log
+*.tsbuildinfo
+.env
+.env.local
+.env.development.local
+.env.preview.local
+.env.production.local
+apps/web/src/infrastructure/database/generated

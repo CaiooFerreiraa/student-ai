@@ -1,0 +1,17 @@
+{
+  "name": "student-ai",
+  "private": true,
+  "packageManager": "bun@1.3.5",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "bun run --cwd apps/web dev",
+    "lint": "bun run --cwd apps/web lint",
+    "test": "bun run --cwd apps/web test",
+    "typecheck": "bun run --cwd apps/web typecheck",
+    "build": "bun run --cwd apps/web build",
+    "prisma:generate": "bun run --cwd apps/web prisma:generate",
+    "prisma:migrate:dev": "bun run --cwd apps/web prisma:migrate:dev"
+  }
+}

@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Syne", sans-serif;
+  --font-body: Arial, Helvetica, sans-serif;
+
+  --color-paper: #f4efe6;
+  --color-paper-strong: #fbf7f0;
+  --color-paper-muted: #e7dfd2;
+  --color-ink: #161411;
+  --color-ink-soft: #655f57;
+  --color-accent: #a4491c;
+  --color-accent-deep: #7b2f0f;
+  --color-accent-soft: #f3d7ca;
+  --color-line: rgba(22, 20, 17, 0.12);
+  --color-danger: #a62d22;
+  --color-success: #275d4b;
+  --color-warning: #946114;
+
+  --radius-panel: 1.75rem;
+  --radius-card: 1.25rem;
+  --shadow-cut: 12px 12px 0 rgba(22, 20, 17, 0.06);
+  --shadow-soft: 0 20px 60px rgba(22, 20, 17, 0.08);
+}
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    @apply min-h-full scroll-smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-paper text-ink antialiased;
+    font-family: var(--font-body);
+    background-image:
+      radial-gradient(circle at top left, rgba(164, 73, 28, 0.14), transparent 26%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0)),
+      linear-gradient(135deg, rgba(0, 0, 0, 0.018) 25%, transparent 25%),
+      linear-gradient(225deg, rgba(0, 0, 0, 0.018) 25%, transparent 25%);
+    background-size: auto, auto, 18px 18px, 18px 18px;
+    background-position: 0 0, 0 0, 0 0, 9px 9px;
+  }
+
+  a {
+    @apply cursor-pointer;
+  }
+
+  button,
+  [role="button"],
+  summary {
+    @apply cursor-pointer;
+  }
+
+  input,
+  textarea,
+  select {
+    @apply cursor-text;
+  }
+
+  button:disabled,
+  input:disabled,
+  textarea:disabled,
+  select:disabled {
+    @apply cursor-not-allowed opacity-70;
+  }
+
+  ::selection {
+    background: rgba(164, 73, 28, 0.18);
+  }
+}
+
+@layer components {
+  .app-shell {
+    @apply mx-auto w-full max-w-[1760px] px-4 pb-24 pt-4 sm:px-5 lg:px-6 2xl:px-8;
+  }
+
+  .ui-panel {
+    @apply rounded-[var(--radius-panel)] border border-line bg-paper-strong/90 backdrop-blur-sm;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .ui-panel-cut {
+    @apply rounded-[var(--radius-panel)] border border-ink/65 bg-paper-strong;
+    box-shadow: var(--shadow-cut);
+  }
+
+  .ui-card {
+    @apply rounded-[var(--radius-card)] border border-line bg-white/78;
+  }
+
+  .ui-button-primary {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-accent bg-accent px-5 text-sm font-bold tracking-[0.18em] text-paper-strong uppercase transition duration-200 hover:-translate-y-0.5 hover:bg-accent-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper;
+  }
+
+  .ui-button-secondary {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-ink/15 bg-white/70 px-5 text-sm font-bold tracking-[0.18em] text-ink uppercase transition duration-200 hover:-translate-y-0.5 hover:border-ink/35 hover:bg-paper-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper;
+  }
+
+  .ui-button-ghost {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-transparent px-4 text-sm font-semibold text-ink-soft transition duration-200 hover:bg-white/70 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-paper;
+  }
+
+  .ui-input {
+    @apply min-h-12 w-full rounded-2xl border border-ink/12 bg-white/80 px-4 text-[15px] text-ink outline-none transition duration-200 placeholder:text-ink-soft/70 focus:border-accent focus:ring-2 focus:ring-accent/20;
+  }
+
+  .ui-select {
+    @apply min-h-12 w-full rounded-2xl border border-ink/12 bg-white/80 px-4 text-[15px] text-ink outline-none transition duration-200 focus:border-accent focus:ring-2 focus:ring-accent/20;
+  }
+
+  .ui-textarea {
+    @apply min-h-32 w-full rounded-[1.4rem] border border-ink/12 bg-white/80 px-4 py-3 text-[15px] text-ink outline-none transition duration-200 placeholder:text-ink-soft/70 focus:border-accent focus:ring-2 focus:ring-accent/20;
+  }
+
+  .ui-label {
+    @apply mb-2 block text-[11px] font-bold uppercase tracking-[0.22em] text-ink-soft;
+  }
+
+  .ui-badge {
+    @apply inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white/80 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-ink-soft;
+  }
+
+  .ui-skeleton {
+    @apply animate-pulse rounded-[var(--radius-card)] bg-paper-muted/70;
+  }
+
+  .ui-grid-aside {
+    @apply grid gap-5 2xl:grid-cols-[240px_minmax(0,1fr)];
+  }
+
+  .ui-surface-noise {
+    background-image:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0)),
+      repeating-linear-gradient(
+        135deg,
+        rgba(22, 20, 17, 0.015),
+        rgba(22, 20, 17, 0.015) 1px,
+        transparent 1px,
+        transparent 9px
+      );
+  }
+
+  .ui-reading-title {
+    @apply max-w-4xl text-balance text-[1.7rem] font-semibold leading-[1.14] tracking-[-0.04em] text-ink sm:text-[2rem] lg:text-[2.35rem];
+    font-family: var(--font-body);
+  }
+
+  .ui-reading-copy {
+    @apply text-[15px] leading-7 text-ink-soft sm:text-base sm:leading-8;
+  }
+
+  .ui-option-card {
+    @apply min-h-24 w-full rounded-[1.45rem] border border-ink/10 bg-white/78 px-5 py-5 text-left transition duration-200;
+  }
+}
